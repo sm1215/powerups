@@ -102,8 +102,6 @@ $(function(){
 			updateStopImageNumber(imageNumber);		
 		}
 	});
-	$('#stopImageNumber').spinner('value', 0);
-	updateStopImageNumber($('#stopImageNumber').spinner('value'));		
 
 	$('.image_sample').children().click(function(){
 		var stopImageNumber = $(this).attr('data-value');
