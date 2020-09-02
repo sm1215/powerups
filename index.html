@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Roulette.js Demo</title>
+		<link rel="stylesheet" href="./css/bootstrap.css"></link>
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/ui-lightness/jquery-ui.css">
+		<link rel="stylesheet" href="./css/bootstrap-responsive.css"></link>
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/ui-lightness/jquery-ui.css">
+		<link rel="stylesheet" href="./css/main.css"></link>
+	</head>
+	<body>
+		<div class="container">
+			<div class="page-header">
+				<h1>
+					Powerups!
+				</h1>
+			</div>
+
+			<div class="row">
+				<div class="span4">
+					<div class="roulette_container" >
+						<div class="roulette" style="display:none;">
+              <img src="./images/banana.png"/>
+              <img src="./images/blue-shell.png"/>
+              <img src="./images/bob-omb.png"/>
+              <img src="./images/boo.png"/>
+              <img src="./images/bullet-bill.png"/>
+              <img src="./images/coin.png"/>
+              <img src="./images/fake-item-box.png"/>
+              <img src="./images/golden-mushroom.png"/>
+              <img src="./images/green-shell.png"/>
+              <img src="./images/lightning.png"/>
+              <img src="./images/mushroom.png"/>
+              <img src="./images/red-shell.png"/>
+              <img src="./images/starman.png"/>
+              <img src="./images/triple-bananas.png"/>
+              <img src="./images/triple-mushroom.png"/>
+              <img src="./images/warp-pipe.png"/>
+						</div>
+					</div>
+					<div class="btn_container">
+						<p>
+						<button class="btn btn-large btn-primary start"> START </button>
+						<button class="stop btn-large btn btn-warning"> STOP </button>
+						</p>
+					</div>
+					<div class="log_container">
+						<p class="demo_label">Log</p>
+						<div id="msg">
+						</div>
+					</div>
+				</div>
+				<div class="span4">
+					<div class="right_container">
+						<p class="demo_label">Paramater</p>
+						<div class="speed_value param_label">
+							<span class="param_name">speed :</span> <span class="speed_param"></span>
+						</div>
+						<div id="speed"> </div>
+						
+						<div class="duration_value param_label">
+							<span class="param_name">duration :</span> <span class="duration_param"></span>
+						</div>
+						<div id="duration"> </div>
+						
+						<!-- <div class="stop_image_number_value param_label">
+							<span class="param_name">stop image number :</span> <span class="stop_image_number_param"></span>
+						</div>
+						<input id="stopImageNumber" name="stopImageNumber"/>
+						<span class="image_sample">
+							<img data-value="0"  src="star.png"/>
+							<img data-value="1"  src="flower.png"/>
+							<img data-value="2"  src="coin.png"/>
+							<img data-value="3"  src="mshroom.png"/>
+							<img data-value="4"  src="chomp.png"/>
+							<img data-value="-1" src="random.png" title="random"/>
+						</span> -->
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
+		<script src="./js/roulette.js"></script>
+		<script src="./js/main.js"></script>
+
+	</body>
+</html>
