@@ -7,7 +7,7 @@ $(function(){
 		if (!ENABLE_LOGGING) {
 			return;
 		}
-		$('#msg')
+		$('.msg')
 	.append('<p class="muted">' + msg + '</p>')
 	.scrollTop(100000000);
 
@@ -15,8 +15,8 @@ $(function(){
 	var p = {
 		startCallback : function() {
 			appendLogMsg('start');
-			$('#speed, #duration').slider('disable');
-			$('#stopImageNumber').spinner('disable');
+			$('.speed, .duration').slider('disable');
+			$('.stopImageNumber').spinner('disable');
 			$('.start').attr('disabled', 'true');
 			$('.stop').removeAttr('disabled');
 		},
@@ -26,14 +26,25 @@ $(function(){
 		},
 		stopCallback : function($stopElm) {
 			appendLogMsg('stop');
-			$('#speed, #duration').slider('enable');
-			$('#stopImageNumber').spinner('enable');
+			$('.speed, .duration').slider('enable');
+			$('.stopImageNumber').spinner('enable');
 			$('.start').removeAttr('disabled');
 			$('.stop').attr('disabled', 'true');
 		}
-
 	}
+
+	// support multiple roulettes on same page
+	$('.instance-container').each(function(index, el) {
+		// uniquely identify each instance and their corresponding controls
+		$(el).attr('id', index);
+		$(el).find('.roulette, .btn, .speed, .duration').each(function(childIndex, childEl) {
+			$(childEl).attr('id', index);
+		})
+	});
+
+
 	var rouletter = $('div.roulette');
+	console.log("rouletter", rouletter);
 	rouletter.roulette(p);	
 	$('.stop').click(function(){
 		var stopImageNumber = $('.stopImageNumber').val();
@@ -43,7 +54,7 @@ $(function(){
 		rouletter.roulette('stop');	
 	});
 	$('.stop').attr('disabled', 'true');
-	$('.start').click(function(){
+	$('.start').click(function(ev){
 		rouletter.roulette('start');	
 	});
 
@@ -56,7 +67,7 @@ $(function(){
 	var updateSpeed = function(speed){
 		$('.speed_param').text(speed);
 	}
-	$('#speed').slider({
+	$('.speed').slider({
 		min: 1,
 		max: 30,
 		value : 10,
@@ -65,12 +76,12 @@ $(function(){
 			updateParamater();
 		}
 	});
-	updateSpeed($('#speed').slider('value'));
+	updateSpeed($('.speed').slider('value'));
 
 	var updateDuration = function(duration){
 		$('.duration_param').text(duration);
 	}
-	$('#duration').slider({
+	$('.duration').slider({
 		min: 2,
 		max: 10,
 		value : 3,
@@ -79,7 +90,7 @@ $(function(){
 			updateParamater();
 		}
 	});
-	updateDuration($('#duration').slider('value'));
+	updateDuration($('.duration').slider('value'));
 
 	var updateStopImageNumber = function(stopImageNumber) {
 		$('.image_sample').children().css('opacity' , 0.2);
@@ -88,7 +99,7 @@ $(function(){
 		updateParamater();
 	}
 
-	$('#stopImageNumber').spinner({
+	$('.stopImageNumber').spinner({
 		spin: function( event, ui ) {
 			var imageNumber = ui.value;
 			if ( ui.value > 4 ) {
@@ -108,7 +119,7 @@ $(function(){
 
 	$('.image_sample').children().click(function(){
 		var stopImageNumber = $(this).attr('data-value');
-		$('#stopImageNumber').spinner('value', stopImageNumber);
+		$('.stopImageNumber').spinner('value', stopImageNumber);
 		updateStopImageNumber(stopImageNumber);
 	});
 });
