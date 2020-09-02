@@ -1,5 +1,4 @@
 $(function(){
-	var INSTANCES = [];
 	var ENABLE_LOGGING = false;
 	$('.roulette').find('img').hover(function(){
 		console.log($(this).height());
