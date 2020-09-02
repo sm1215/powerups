@@ -1,9 +1,12 @@
 $(function(){
-
+	var ENABLE_LOGGING = false;
 	$('.roulette').find('img').hover(function(){
 		console.log($(this).height());
 	});
 	var appendLogMsg = function(msg) {
+		if (!ENABLE_LOGGING) {
+			return;
+		}
 		$('#msg')
 	.append('<p class="muted">' + msg + '</p>')
 	.scrollTop(100000000);
