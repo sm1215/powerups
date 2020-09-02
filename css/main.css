@@ -14,7 +14,8 @@ div.roulette {
 }
 
 div.roulette_container {
-	background-color:rgb(253, 252, 253);
+	/* background-color:rgb(253, 252, 253); */
+	background-color: #fff;
 	width:200px;
 	height:200px;
 	border:1px solid rgba(253, 252, 253, 0.31);
