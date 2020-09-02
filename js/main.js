@@ -1,4 +1,5 @@
 $(function(){
+	var INSTANCES = [];
 	var ENABLE_LOGGING = false;
 	$('.roulette').find('img').hover(function(){
 		console.log($(this).height());
@@ -33,19 +34,27 @@ $(function(){
 		}
 	}
 
+	var rouletter = $('div.roulette');
+
 	// support multiple roulettes on same page
-	$('.instance-container').each(function(index, el) {
+	// this might make more sense to do in roulette.js
+	// but just going to wrap it externally for now
+	// since there is easier control here
+	rouletter.each(function(index, el) {
 		// uniquely identify each instance and their corresponding controls
-		$(el).attr('id', index);
-		$(el).find('.roulette, .btn, .speed, .duration').each(function(childIndex, childEl) {
-			$(childEl).attr('id', index);
-		})
+		var instanceContainer = $(el).parents('.instance-container');
+		$(instanceContainer).attr('id', index);
+		$(instanceContainer)
+			.find('.roulette, .btn, .speed, .duration')
+			.each(function(childIndex, childEl) {
+				$(childEl).attr('id', index);
+			});
+
+		// separate params to allow for unique identifiers
+		var params = Object.assign({instanceId: index}, p);
+		$(el).roulette(params);
 	});
 
-
-	var rouletter = $('div.roulette');
-	console.log("rouletter", rouletter);
-	rouletter.roulette(p);	
 	$('.stop').click(function(){
 		var stopImageNumber = $('.stopImageNumber').val();
 		if(stopImageNumber == "") {
@@ -55,7 +64,8 @@ $(function(){
 	});
 	$('.stop').attr('disabled', 'true');
 	$('.start').click(function(ev){
-		rouletter.roulette('start');	
+		var instanceId = $(ev.target).attr('id');
+		rouletter.roulette('start', instanceId);
 	});
 
 	var updateParamater = function(){
