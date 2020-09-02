@@ -14,6 +14,7 @@
 			}
 		}
 		var defaultProperty = {
+			instanceId: 0,
 			playCount : 0,
 			$rouletteTarget : null,
 			imageCount : null,
@@ -34,7 +35,7 @@
 			slowdownTimer : null,
 			isIE : navigator.userAgent.toLowerCase().indexOf('msie') > -1 // TODO IE
 		};
-		var p = $.extend({}, defaultSettings, options, defaultProperty);
+		var p = $.extend({}, defaultSettings, defaultProperty, options);
 
 		var reset = function() {
 			p.maxDistance = defaultProperty.maxDistance;
