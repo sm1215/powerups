@@ -42,7 +42,7 @@ $(function(){
 
 	$('.stop').click(function(ev){
 		var instanceId = $(ev.target).attr('data-id');
-		var stopImageNumber = $('.stopImageNumber').val();
+		var stopImageNumber = $(`.stopImageNumber[data-id="${instanceId}"]`).val();
 		if(stopImageNumber == "") {
 			stopImageNumber = null;
 		}
@@ -57,38 +57,41 @@ $(function(){
 	var updateParameter = function(instanceId){
 		p['speed'] = Number($(`.speed_param[data-id="${instanceId}"]`).eq(0).text());
 		p['duration'] = Number($(`.duration_param[data-id="${instanceId}"]`).eq(0).text());
-		p['stopImageNumber'] = Number($(`.stop_image_number_param=["${instanceId}"]`).eq(0).text());
+		p['stopImageNumber'] = Number($(`.stop_image_number_param[data-id="${instanceId}"]`).eq(0).text());
 		rouletter.roulette('option', {options: p, instanceId});	
 	}
-	var updateSpeed = function(speed){
-		$('.speed_param').text(speed);
+
+	var updateSpeed = function(instanceId, speed){
+		$(`.speed_param[data-id="${instanceId}"]`).text(speed);
+	}
+	var handleSpeedEvent = function(event, {value = 10}) {
+		var instanceId = $(event.target).attr('data-id');
+		updateParameter(instanceId);
+		updateSpeed(instanceId, value);
 	}
 	$('.speed').slider({
 		min: 1,
 		max: 30,
 		value : 10,
-		slide: function( event, ui ) {
-			var instanceId = $(event.target).attr('data-id');
-			updateSpeed(ui.value);
-			updateParameter(instanceId);
-		}
+		create: handleSpeedEvent,
+		slide: handleSpeedEvent
 	});
-	updateSpeed($('.speed').slider('value'));
 
-	var updateDuration = function(duration){
-		$('.duration_param').text(duration);
+	var updateDuration = function(instanceId, duration){
+		$(`.duration_param[data-id="${instanceId}"]`).text(duration);
+	}
+	var handleDurationEvent = function(event, {value = 3}) {
+		var instanceId = $(event.target).attr('data-id');
+		updateParameter(instanceId);
+		updateDuration(instanceId, value);
 	}
 	$('.duration').slider({
 		min: 2,
 		max: 10,
 		value : 3,
-		slide: function( event, ui ) {
-			var instanceId = $(event.target).attr('data-id');
-			updateDuration(ui.value);
-			updateParameter(instanceId);
-		}
+		create: handleDurationEvent,
+		slide: handleDurationEvent
 	});
-	updateDuration($('.duration').slider('value'));
 
 	var updateStopImageNumber = function(instanceId, stopImageNumber) {
 		$('.image_sample').children().css('opacity' , 0.2);
