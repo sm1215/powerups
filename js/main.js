@@ -35,10 +35,17 @@ $(function(){
 			$(`.start[data-id="${instanceId}"]`).removeAttr('disabled');
 			$(`.stop[data-id="${instanceId}"]`).attr('disabled', 'true');
 		}
-	}
+	};
 
+	// TODO: any calls made to rouletter are duplicated based on how many instances exist
 	var rouletter = $('div.roulette');
 	rouletter.roulette(null, {options: p});
+
+	var getInstance = function(instanceId) {
+		return rouletter.filter(function () {
+			return $(this).attr('data-id') === instanceId;
+		});
+	}
 
 	$('.stop').click(function(ev){
 		var instanceId = $(ev.target).attr('data-id');
@@ -46,19 +53,22 @@ $(function(){
 		if(stopImageNumber == "") {
 			stopImageNumber = null;
 		}
-		rouletter.roulette('stop', {instanceId});
+		var instance = getInstance(instanceId);
+		instance.roulette('stop', {instanceId});
 	});
 	$('.stop').attr('disabled', 'true');
 	$('.start').click(function(ev){
 		var instanceId = $(ev.target).attr('data-id');
-		rouletter.roulette('start', {instanceId});
+		var instance = getInstance(instanceId);
+		instance.roulette('start', {instanceId});
 	});
 
 	var updateParameter = function(instanceId){
 		p['speed'] = Number($(`.speed_param[data-id="${instanceId}"]`).eq(0).text());
 		p['duration'] = Number($(`.duration_param[data-id="${instanceId}"]`).eq(0).text());
 		p['stopImageNumber'] = Number($(`.stop_image_number_param[data-id="${instanceId}"]`).eq(0).text());
-		rouletter.roulette('option', {options: p, instanceId});	
+		var instance = getInstance(instanceId);
+		instance.roulette('option', {options: p, instanceId});	
 	}
 
 	var updateSpeed = function(instanceId, speed){
@@ -80,7 +90,7 @@ $(function(){
 	var updateDuration = function(instanceId, duration){
 		$(`.duration_param[data-id="${instanceId}"]`).text(duration);
 	}
-	var handleDurationEvent = function(event, {value = 3}) {
+	var handleDurationEvent = function(event, {value = 0.25}) {
 		var instanceId = $(event.target).attr('data-id');
 		updateParameter(instanceId);
 		updateDuration(instanceId, value);
@@ -96,7 +106,7 @@ $(function(){
 	var updateStopImageNumber = function(instanceId, stopImageNumber) {
 		$('.image_sample').children().css('opacity' , 0.2);
 		$('.image_sample').children().filter('[data-value="' + stopImageNumber + '"]').css('opacity' , 1);
-		$('.stop_image_number_param').text(stopImageNumber);
+		$(`.stop_image_number_param[data-id="${instanceId}"]`).text(stopImageNumber);
 		updateParameter(instanceId);
 	}
 

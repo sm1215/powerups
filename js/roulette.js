@@ -14,7 +14,6 @@
 			}
 		}
 		var defaultProperty = {
-			instanceId: 0,
 			playCount : 0,
 			$rouletteTarget : null,
 			imageCount : null,
@@ -35,7 +34,7 @@
 			slowdownTimer : null,
 			isIE : navigator.userAgent.toLowerCase().indexOf('msie') > -1 // TODO IE
 		};
-		var p = $.extend({}, defaultSettings, defaultProperty, options);
+		var p = $.extend({}, defaultSettings, options, defaultProperty);
 
 		var reset = function() {
 			p.maxDistance = defaultProperty.maxDistance;
@@ -65,7 +64,6 @@
 		}
 
 		var roll = function() {
-			console.log("roll p.instanceId", p.instanceId);
 			var speed_ = p.speed;
 
 			if (p.isRunUp) {
@@ -180,6 +178,7 @@
 				slowDownSetup();
 			}
 		}
+
 		var option = function(options) {
 			p = $.extend(p, options);
 			p.speed = Number(p.speed);
