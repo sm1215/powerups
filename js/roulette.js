@@ -190,16 +190,12 @@
 	var pluginName = 'roulette';
 	var rouletteInstances = [];
 	$.fn[pluginName] = function(method, {options, instanceId}) {
-		console.log("method", method);
-		console.log("options", options);
-		console.log("instanceId", instanceId);
 		return this.each(function() {
 			var self = $(this);
 			var roulette = self.data('plugin_' + pluginName);
 
 			if (roulette) {
 				var instance = rouletteInstances[instanceId];
-				console.log("instance", instance);
 				if (instance && instance[method]) {
 					instance[method](options);
 				} else {
@@ -212,7 +208,6 @@
 				rouletteInstances.push(roulette);
 				$(this).data('plugin_' + pluginName, roulette);
 			}
-			console.log("instances", rouletteInstances);
 		});
 	}
 })(jQuery);
