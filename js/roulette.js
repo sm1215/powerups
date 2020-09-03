@@ -5,7 +5,7 @@
 			speed : 10, // x > 0
 			stopImageNumber : null, // x >= 0 or null or -1
 			rollCount : 3, // x >= 0
-			duration : 0.5, //(x second)
+			duration : 3, //(x second)
 			stopCallback : function() {
 			},
 			startCallback : function() {
@@ -158,8 +158,11 @@
 			if (p.maxPlayCount && p.playCount > p.maxPlayCount) {
 				return;
 			}
-			p.stopImageNumber = $.isNumeric(defaultProperty.originalStopImageNumber) && Number(defaultProperty.originalStopImageNumber) >= 0 ?
-									Number(defaultProperty.originalStopImageNumber) : Math.floor(Math.random() * p.imageCount);
+
+			// Making the stopping image always random
+			// p.stopImageNumber = $.isNumeric(defaultProperty.originalStopImageNumber) && Number(defaultProperty.originalStopImageNumber) >= 0 ?
+			// 						Number(defaultProperty.originalStopImageNumber) : Math.floor(Math.random() * p.imageCount);
+			p.stopImageNumber = Math.floor(Math.random() * p.imageCount);
 			p.startCallback();
 			roll();
 			p.slowDownTimer = setTimeout(function(){
