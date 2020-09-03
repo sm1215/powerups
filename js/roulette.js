@@ -212,9 +212,10 @@
 					console && console.error('Method ' + method + ' does not exist on jQuery.roulette');
 				}
 			} else {
-				options.instanceId = rouletteInstances.length;
-				roulette = new Roulette(options);
-				roulette.init(self, options);
+				var freshOptions = $.extend({}, options);
+				freshOptions.instanceId = rouletteInstances.length;
+				roulette = new Roulette(freshOptions);
+				roulette.init(self, freshOptions);
 				rouletteInstances.push(roulette);
 				$(this).data('plugin_' + pluginName, roulette);
 			}
