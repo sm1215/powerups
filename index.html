@@ -10,134 +10,76 @@
 		<link rel="stylesheet" href="./css/main.css"></link>
 	</head>
 	<body>
-		<div class="container">
-			<div class="page-header">
-				<h1>
-					Powerups!
-				</h1>
-			</div>
-
-			<div class="row">
-				<div class="span6 instance-container">
-					<div class="roulette_container" >
-						<div class="roulette" style="display:none;">
-							<img src="./images/items/banana.png"/>
-							<img src="./images/items/blue-shell.png"/>
-							<img src="./images/items/bob-omb.png"/>
-							<img src="./images/items/boo.png"/>
-							<img src="./images/items/bullet-bill.png"/>
-							<img src="./images/items/coin.png"/>
-							<img src="./images/items/fake-item-box.png"/>
-							<img src="./images/items/golden-mushroom.png"/>
-							<img src="./images/items/green-shell.png"/>
-							<img src="./images/items/lightning-bolt.png"/>
-							<img src="./images/items/mushroom.png"/>
-							<img src="./images/items/red-shell.png"/>
-							<img src="./images/items/star.png"/>
-							<img src="./images/items/triple-banana.png"/>
-							<img src="./images/items/triple-mushroom.png"/>
-							<img src="./images/items/warp-pipe.png"/>
+		<div class="bg">
+			<div class="container">
+				<div class="row">
+					<div class="span6 instance-container">
+						<div class="roulette_container" >
+							<div class="roulette" style="display:none;">
+								<img src="./images/items/banana.png"/>
+								<img src="./images/items/blue-shell.png"/>
+								<img src="./images/items/bob-omb.png"/>
+								<img src="./images/items/boo.png"/>
+								<img src="./images/items/bullet-bill.png"/>
+								<img src="./images/items/coin.png"/>
+								<img src="./images/items/fake-item-box.png"/>
+								<img src="./images/items/golden-mushroom.png"/>
+								<img src="./images/items/green-shell.png"/>
+								<img src="./images/items/lightning-bolt.png"/>
+								<img src="./images/items/mushroom.png"/>
+								<img src="./images/items/red-shell.png"/>
+								<img src="./images/items/star.png"/>
+								<img src="./images/items/triple-banana.png"/>
+								<img src="./images/items/triple-mushroom.png"/>
+								<img src="./images/items/warp-pipe.png"/>
+							</div>
+						</div>
+						<div class="btn_container">
+							<p>
+							<button class="btn btn-large btn-primary start sound"> START </button>
+							<button class="stop btn-large btn btn-warning"> STOP </button>
+							</p>
 						</div>
 					</div>
-					<div class="btn_container">
-						<p>
-						<button class="btn btn-large btn-primary start sound"> START </button>
-						<button class="stop btn-large btn btn-warning"> STOP </button>
-						</p>
-					</div>
-				</div>
 
-				<div class="span6 instance-container">
-					<div class="roulette_container" >
-						<div class="roulette" style="display:none;">
-							<img src="./images/racers/brittany.png"/>
-							<img src="./images/racers/faith.png"/>
-							<img src="./images/racers/gabe.png"/>
-							<img src="./images/racers/hannah.png"/>
-							<img src="./images/racers/jessdylan.png"/>
-							<img src="./images/racers/johanna.png"/>
-							<img src="./images/racers/samamy.png"/>
-							<img src="./images/racers/shane.png"/>
-							<img src="./images/racers/tyler.png"/>
-							<img src="./images/racers/will.png"/>
-							<img src="./images/racers/woodyblair.png"/>
+					<div class="span6 instance-container">
+						<div class="roulette_container" >
+							<div class="roulette" style="display:none;">
+								<img src="./images/racers/brittany.png"/>
+								<img src="./images/racers/faith.png"/>
+								<img src="./images/racers/gabe.png"/>
+								<img src="./images/racers/hannah.png"/>
+								<img src="./images/racers/jessdylan.png"/>
+								<img src="./images/racers/johanna.png"/>
+								<img src="./images/racers/samamy.png"/>
+								<img src="./images/racers/shane.png"/>
+								<img src="./images/racers/tyler.png"/>
+								<img src="./images/racers/will.png"/>
+								<img src="./images/racers/woodyblair.png"/>
+							</div>
 						</div>
-					</div>
-					<div class="btn_container">
-						<p>
-						<button class="btn btn-large btn-primary start"> START </button>
-						<button class="stop btn-large btn btn-warning"> STOP </button>
-						</p>
+						<div class="btn_container">
+							<p>
+							<button class="btn btn-large btn-primary start"> START </button>
+							<button class="stop btn-large btn btn-warning"> STOP </button>
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>
+			<iframe id="sound" type="text/html" width="640" height="390" 
+				src="http://www.youtube.com/embed/a4eJjmAxUGA?enablejsapi=1" frameborder="0"></iframe>
 		</div>
-
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
 		<script src="./js/roulette.js"></script>
 		<script src="./js/main.js"></script>
-
-		<iframe id="sound" type="text/html" width="640" height="390" 
-			src="http://www.youtube.com/embed/a4eJjmAxUGA?enablejsapi=1" frameborder="0"></iframe>
-
 		<script type="text/javascript">
 			var sound;
 			function onYouTubeIframeAPIReady() {
-				sound = new YT.Player('sound', {
-					// events: {
-					// 	'onReady': onPlayerReady,
-					// 	'onStateChange': onPlayerStateChange
-					// }
-				});
+				sound = new YT.Player('sound', {});
 			}
 			window.sound = sound;
 		</script>
-
-		<!-- <div id="player"></div>
-
-		<script>
-			// 2. This code loads the IFrame Player API code asynchronously.
-			var tag = document.createElement('script');
-
-			tag.src = "https://www.youtube.com/iframe_api";
-			var firstScriptTag = document.getElementsByTagName('script')[0];
-			firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-			// 3. This function creates an <iframe> (and YouTube player)
-			//    after the API code downloads.
-			var player;
-			function onYouTubeIframeAPIReady() {
-				player = new YT.Player('player', {
-					height: '390',
-					width: '640',
-					videoId: 'a4eJjmAxUGA',
-					events: {
-						'onReady': onPlayerReady,
-						'onStateChange': onPlayerStateChange
-					}
-				});
-			}
-
-			// 4. The API will call this function when the video player is ready.
-			function onPlayerReady(event) {
-				event.target.playVideo();
-			}
-
-			// 5. The API calls this function when the player's state changes.
-			//    The function indicates that when playing a video (state=1),
-			//    the player should play for six seconds and then stop.
-			var done = false;
-			function onPlayerStateChange(event) {
-				if (event.data == YT.PlayerState.PLAYING && !done) {
-					setTimeout(stopVideo, 5000);
-					done = true;
-				}
-			}
-			function stopVideo() {
-				player.stopVideo();
-			}
-		</script> -->
-
 	</body>
 </html>
