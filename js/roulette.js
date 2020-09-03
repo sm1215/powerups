@@ -133,6 +133,16 @@
 			p.$rouletteTarget.append(p.$images);
 			p.$rouletteTarget.append(p.$images.eq(0).clone());
 			$roulette.show();
+
+			// support multiple roulettes on same page
+			// uniquely identify each instance and their corresponding controls
+			var instanceContainer = $roulette.parents('.instance-container');
+			$(instanceContainer).attr('id', p.instanceId);
+			$(instanceContainer)
+				.find('.roulette, .btn, .speed, .duration')
+				.each(function(childIndex, childEl) {
+					$(childEl).attr('id', p.instanceId);
+				});
 		}
 
 		var start = function() {
