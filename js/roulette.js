@@ -4,8 +4,8 @@
 			maxPlayCount : null, // x >= 0 or null
 			speed : 10, // x > 0
 			stopImageNumber : null, // x >= 0 or null or -1
-			rollCount : 3, // x >= 0
-			duration : 3, //(x second)
+			rollCount : 1, // x >= 0
+			duration : 1.5, //(x second)
 			stopCallback : function() {
 			},
 			startCallback : function() {
@@ -49,13 +49,14 @@
 		}
 
 		var slowDownSetup = function() {
+			var slowdownModifier = .75;
 			if(p.isSlowdown){
 				return;
 			}
 			p.slowDownCallback();
 			p.isSlowdown = true;
-			p.slowDownStartDistance = p.distance;
-			p.maxDistance = p.distance + (2*p.totalHeight);
+			p.slowDownStartDistance = p.distance * slowdownModifier;
+			p.maxDistance = p.distance * slowdownModifier + p.totalHeight;
 			p.maxDistance += p.imageHeight - p.topPosition % p.imageHeight;
 			if (p.stopImageNumber != null) {
 				p.maxDistance += (p.totalHeight - (p.maxDistance % p.totalHeight) + (p.stopImageNumber * p.imageHeight))

@@ -61,6 +61,11 @@ $(function(){
 		var instanceId = $(ev.target).attr('data-id');
 		var instance = getInstance(instanceId);
 		instance.roulette('start', {instanceId});
+
+		var hasSound = $(ev.target).hasClass('sound');
+		if (hasSound && window.sound) {
+			window.sound.playVideo();
+		}
 	});
 
 	var updateParameter = function(instanceId){
@@ -90,15 +95,15 @@ $(function(){
 	var updateDuration = function(instanceId, duration){
 		$(`.duration_param[data-id="${instanceId}"]`).text(duration);
 	}
-	var handleDurationEvent = function(event, {value = 3}) {
+	var handleDurationEvent = function(event, {value = 1.5}) {
 		var instanceId = $(event.target).attr('data-id');
 		updateParameter(instanceId);
 		updateDuration(instanceId, value);
 	}
 	$('.duration').slider({
-		min: 2,
+		min: 1,
 		max: 10,
-		value : 3,
+		value : 1.5,
 		create: handleDurationEvent,
 		slide: handleDurationEvent
 	});
@@ -135,4 +140,10 @@ $(function(){
 		$('.stopImageNumber').spinner('value', stopImageNumber);
 		updateStopImageNumber(instanceId, stopImageNumber);
 	});
+
+	var tag = document.createElement('script');
+  tag.id = 'iframe-demo';
+  tag.src = 'https://www.youtube.com/iframe_api';
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 });
