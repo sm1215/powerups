@@ -5,7 +5,7 @@
 			speed : 10, // x > 0
 			stopImageNumber : null, // x >= 0 or null or -1
 			rollCount : 3, // x >= 0
-			duration : 3, //(x second)
+			duration : 0.5, //(x second)
 			stopCallback : function() {
 			},
 			startCallback : function() {
@@ -65,6 +65,7 @@
 		}
 
 		var roll = function() {
+			console.log("roll p.instanceId", p.instanceId);
 			var speed_ = p.speed;
 
 			if (p.isRunUp) {
@@ -137,11 +138,20 @@
 			// support multiple roulettes on same page
 			// uniquely identify each instance and their corresponding controls
 			var instanceContainer = $roulette.parents('.instance-container');
-			$(instanceContainer).attr('id', p.instanceId);
+			$(instanceContainer).attr('data-id', p.instanceId);
 			$(instanceContainer)
-				.find('.roulette, .btn, .speed, .duration')
+				.find(`
+					.roulette,
+					.btn,
+					.speed,
+					.speed_param,
+					.duration,
+					.duration_param,
+					.stopImageNumber,
+					.stop_image_number_param
+				`)
 				.each(function(childIndex, childEl) {
-					$(childEl).attr('id', p.instanceId);
+					$(childEl).attr('data-id', p.instanceId);
 				});
 		}
 
