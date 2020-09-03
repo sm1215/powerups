@@ -188,27 +188,31 @@
 	}
 
 	var pluginName = 'roulette';
-	$.fn[pluginName] = function(method, options, instanceId) {
-		var instances = [];
+	var rouletteInstances = [];
+	$.fn[pluginName] = function(method, {options, instanceId}) {
+		console.log("method", method);
+		console.log("options", options);
+		console.log("instanceId", instanceId);
 		return this.each(function() {
 			var self = $(this);
 			var roulette = self.data('plugin_' + pluginName);
 
 			if (roulette) {
-				var instance = instances[instanceId];
+				var instance = rouletteInstances[instanceId];
+				console.log("instance", instance);
 				if (instance && instance[method]) {
 					instance[method](options);
 				} else {
 					console && console.error('Method ' + method + ' does not exist on jQuery.roulette');
 				}
 			} else {
-				options = method;
-				options.instanceId = instances.length;
+				options.instanceId = rouletteInstances.length;
 				roulette = new Roulette(options);
 				roulette.init(self, options);
-				instances.push(roulette);
+				rouletteInstances.push(roulette);
 				$(this).data('plugin_' + pluginName, roulette);
 			}
+			console.log("instances", rouletteInstances);
 		});
 	}
 })(jQuery);

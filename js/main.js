@@ -1,4 +1,5 @@
 $(function(){
+	var ENABLE_LOGGING = false;
 	$('.roulette').find('img').hover(function(){
 		console.log($(this).height());
 	});
@@ -33,26 +34,29 @@ $(function(){
 	}
 
 	var rouletter = $('div.roulette');
-	rouletter.roulette(p);
+	rouletter.roulette(null, {options: p});
 
-	$('.stop').click(function(){
+	$('.stop').click(function(ev){
+		var instanceId = $(ev.target).attr('id');
 		var stopImageNumber = $('.stopImageNumber').val();
 		if(stopImageNumber == "") {
 			stopImageNumber = null;
 		}
-		rouletter.roulette('stop');	
+		rouletter.roulette('stop', {instanceId});
 	});
 	$('.stop').attr('disabled', 'true');
 	$('.start').click(function(ev){
+		console.log("ev", ev);
 		var instanceId = $(ev.target).attr('id');
-		rouletter.roulette('start', instanceId);
+		console.log("instanceId", instanceId);
+		rouletter.roulette('start', {instanceId});
 	});
 
 	var updateParamater = function(){
 		p['speed'] = Number($('.speed_param').eq(0).text());
 		p['duration'] = Number($('.duration_param').eq(0).text());
 		p['stopImageNumber'] = Number($('.stop_image_number_param').eq(0).text());
-		rouletter.roulette('option', p);	
+		rouletter.roulette('option', {options: p});	
 	}
 	var updateSpeed = function(speed){
 		$('.speed_param').text(speed);
