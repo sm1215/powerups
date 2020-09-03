@@ -90,7 +90,7 @@ $(function(){
 	var updateDuration = function(instanceId, duration){
 		$(`.duration_param[data-id="${instanceId}"]`).text(duration);
 	}
-	var handleDurationEvent = function(event, {value = 0.25}) {
+	var handleDurationEvent = function(event, {value = 3}) {
 		var instanceId = $(event.target).attr('data-id');
 		updateParameter(instanceId);
 		updateDuration(instanceId, value);
