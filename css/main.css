@@ -9,10 +9,6 @@ div.roulette-inner {
 	left : 33px;
 }
 
-
-div.roulette { 
-}
-
 div.roulette_container {
 	/* background-color:rgb(253, 252, 253); */
 	background-color: #fff;
@@ -76,6 +72,11 @@ div.ui-slider {
 .roulette {
   overflow: hidden;
 }
-.roulette_container img {
+/* .roulette_container img {
   max-width: calc(200px - 66px);
+} */
+#sound {
+	display: none;
+	opacity: 0;
+	visibility: hidden;
 }
