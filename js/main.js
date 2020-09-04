@@ -64,6 +64,8 @@ $(function(){
 
 		var hasSound = $(ev.target).hasClass('sound');
 		if (hasSound && window.sound) {
+			window.sound.unMute();
+			window.sound.setVolume(100);
 			window.sound.playVideo();
 		}
 	});
