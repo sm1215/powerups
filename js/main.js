@@ -8,15 +8,15 @@ $(function(){
 			return;
 		}
 		$('.msg')
-	.append('<p class="muted">' + msg + '</p>')
-	.scrollTop(100000000);
-
+			.append('<p class="muted">' + msg + '</p>')
+			.scrollTop(100000000);
 	}
 	var p = {
 		startCallback : function() {
 			var instanceId = this.instanceId;
 			appendLogMsg('start');
 
+			resetTooltip();
 			$(`.speed[data-id="${instanceId}"], .duration[data-id="${instanceId}"]`).slider('disable');
 			$(`.stopImageNumber[data-id="${instanceId}"]`).spinner('disable');
 			$(`.start[data-id="${instanceId}"]`).attr('disabled', 'true');
@@ -27,13 +27,16 @@ $(function(){
 			appendLogMsg('slowdown');
 			$(`.stop[data-id="${instanceId}"]`).attr('disabled', 'true');
 		},
-		stopCallback : function($stopElm) {
+		stopCallback : function($stopElem) {
 			var instanceId = this.instanceId;
 			appendLogMsg('stop');
 			$(`.speed[data-id="${instanceId}"], .duration[data-id="${instanceId}"]`).slider('enable');
 			$(`.stopImageNumber[data-id="${instanceId}"]`).spinner('enable');
 			$(`.start[data-id="${instanceId}"]`).removeAttr('disabled');
 			$(`.stop[data-id="${instanceId}"]`).attr('disabled', 'true');
+
+			var itemId = $($stopElem[0]).attr('data-id');
+			showTooltip(itemId);
 		}
 	};
 
@@ -56,6 +59,7 @@ $(function(){
 		var instance = getInstance(instanceId);
 		instance.roulette('stop', {instanceId});
 	});
+
 	$('.stop').attr('disabled', 'true');
 	$('.start').click(function(ev){
 		var instanceId = $(ev.target).attr('data-id');
@@ -81,11 +85,13 @@ $(function(){
 	var updateSpeed = function(instanceId, speed){
 		$(`.speed_param[data-id="${instanceId}"]`).text(speed);
 	}
+
 	var handleSpeedEvent = function(event, {value = 10}) {
 		var instanceId = $(event.target).attr('data-id');
 		updateParameter(instanceId);
 		updateSpeed(instanceId, value);
 	}
+
 	$('.speed').slider({
 		min: 1,
 		max: 30,
@@ -142,6 +148,19 @@ $(function(){
 		$('.stopImageNumber').spinner('value', stopImageNumber);
 		updateStopImageNumber(instanceId, stopImageNumber);
 	});
+
+	var showTooltip = function(tooltipId) {
+		if (!tooltipId) {
+			return;
+		}
+		$('.description-container').addClass('show');
+		$('.item-descriptions').find(`[data-id="${tooltipId}"]`).addClass('show');
+	}
+
+	var resetTooltip = function() {
+		$('.description-container').removeClass('show');
+		$('.item-descriptions').find('p').removeClass('show');
+	}
 
 	var tag = document.createElement('script');
   tag.id = 'iframe-demo';

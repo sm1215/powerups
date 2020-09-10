@@ -17,22 +17,22 @@
 						<div class="box-bg">
 							<div class="roulette_container" >
 								<div class="roulette" style="display:none;">
-									<img src="./images/items/banana.png"/>
-									<img src="./images/items/blue-shell.png"/>
-									<img src="./images/items/bob-omb.png"/>
-									<img src="./images/items/boo.png"/>
-									<img src="./images/items/bullet-bill.png"/>
-									<img src="./images/items/coin.png"/>
-									<img src="./images/items/fake-item-box.png"/>
-									<img src="./images/items/golden-mushroom.png"/>
-									<img src="./images/items/green-shell.png"/>
-									<img src="./images/items/lightning-bolt.png"/>
-									<img src="./images/items/mushroom.png"/>
-									<img src="./images/items/red-shell.png"/>
-									<img src="./images/items/star.png"/>
-									<img src="./images/items/triple-banana.png"/>
-									<img src="./images/items/triple-mushroom.png"/>
-									<img src="./images/items/warp-pipe.png"/>
+									<img data-id="banana" src="./images/items/banana.png"/>
+									<img data-id="blue-shell" src="./images/items/blue-shell.png"/>
+									<img data-id="bob-omb" src="./images/items/bob-omb.png"/>
+									<img data-id="boo" src="./images/items/boo.png"/>
+									<img data-id="bullet-bill" src="./images/items/bullet-bill.png"/>
+									<img data-id="coin" src="./images/items/coin.png"/>
+									<img data-id="fake-item-box" src="./images/items/fake-item-box.png"/>
+									<img data-id="golden-mushroom" src="./images/items/golden-mushroom.png"/>
+									<img data-id="green-shell" src="./images/items/green-shell.png"/>
+									<img data-id="lightning-bolt" src="./images/items/lightning-bolt.png"/>
+									<img data-id="mushroom" src="./images/items/mushroom.png"/>
+									<img data-id="red-shell" src="./images/items/red-shell.png"/>
+									<img data-id="star" src="./images/items/star.png"/>
+									<img data-id="triple-banana" src="./images/items/triple-banana.png"/>
+									<img data-id="triple-mushroom" src="./images/items/triple-mushroom.png"/>
+									<img data-id="warp-pipe" src="./images/items/warp-pipe.png"/>
 								</div>
 							</div>
 						</div>
@@ -56,7 +56,7 @@
 									<img src="./images/racers/johanna.png"/>
 									<img src="./images/racers/samamy.png"/>
 									<!-- <img src="./images/racers/shane.png"/> -->
-									<img src="./images/racers/tyler.png"/>
+									<!-- <img src="./images/racers/tyler.png"/> -->
 									<img src="./images/racers/will.png"/>
 									<img src="./images/racers/woodyblair.png"/>
 								</div>
@@ -69,14 +69,41 @@
 							</p>
 						</div>
 					</div>
+
+					<div class="clearfix"></div>
+
+					<div class="description-container show">
+						<img class="tooltip-icon" src="./images/question-coin.png" alt="Tooltip">
+						<div class="item-descriptions">
+							<p class="show" data-id="banana">You spin out and lose half of what you wager.</p>
+							<p data-id="blue-shell">Hits the person you you selected on its way to 1st for negative 20 points and the person in 1st loses points equal to what would put them 1 point behind second.</p>
+							<p data-id="bob-omb">-100 points.</p>
+							<p data-id="boo">I reveal the first letter of each answer for the round.</p>
+							<p data-id="bullet-bill">Applies to the 4th place team or lower. Moves player up to top 3.</p>
+							<p data-id="coin">All points are doubled for you or tripled.</p>
+							<p data-id="fake-item-box">Lose 30 points & Spin again.</p>
+							<p data-id="golden-mushroom">100 points</p>
+							<p data-id="green-shell">Hits a player for negative 20 points.</p>
+							<p data-id="lightning-bolt">If anyone passes you in points, you lose an addition 20 points for being squished.</p>
+							<p data-id="mushroom">Moves you 1 point ahead of the person in front of you.</p>
+							<p data-id="red-shell">Hits a player for negative 40 points.</p>
+							<p data-id="star">Risk-free wager this round or invullnerable to attacks next round.</p>
+							<p data-id="triple-banana">All points are cut in half this round for you.</p>
+							<p data-id="triple-mushroom">Moves you 1 point ahead of the person 2 spots above you.</p>
+							<p data-id="warp-pipe">You change positions with another player at random.</p>
+						</div>
+					</div>
 				</div>
+				<div class="clearfix"></div>
 			</div>
 			<iframe id="sound" type="text/html" width="640" height="390" 
 				src="https://www.youtube.com/embed/a4eJjmAxUGA?enablejsapi=1" frameborder="0"></iframe>
 		</div>
+		<div class="clearfix"></div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
 		<script src="./js/roulette.js"></script>
+		<script src="./js/config.js"></script>
 		<script src="./js/main.js"></script>
 		<script type="text/javascript">
 			var sound;
