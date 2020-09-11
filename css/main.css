@@ -116,6 +116,7 @@ div.ui-slider {
 	min-height: 20px;
 	opacity: 0;
 	transition: opacity 0.25s ease-in-out;
+	margin-top: 5vh;
 }
 .description-container.show {
 	opacity: 1;
