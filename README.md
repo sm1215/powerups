@@ -1,5 +1,7 @@
 # powerups
 
+This is just a small, fun utility we use during friend-run trivia games to pass out bonuses and pitfalls to players.
+
 Available here:
 https://sm1215.github.io/powerups/
 
